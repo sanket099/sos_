@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fcc590"
+    tools:context=".profile">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_details"
+        android:layout_margin="25dp"
+        android:textColor="#212121"
+        android:background="@drawable/editbox"
+        android:gravity="center"
+        android:textSize="20sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textview1"
+        android:layout_margin="20dp"
+        android:textSize="20sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+
+        <Button
+            android:id="@+id/low"
+            android:layout_width="152dp"
+            android:layout_height="152dp"
+            android:layout_gravity="center"
+            android:background="@drawable/buttons"
+            android:onClick="low"
+            android:shadowColor="#212121"
+            android:elevation="109dp"
+            android:layout_marginStart="45dp"
+
+            android:layout_marginEnd="5dp"
+            android:text="LOW"
+            android:textSize="35dp" />
+
+        <Button
+            android:id="@+id/medium"
+            android:layout_width="152dp"
+            android:layout_height="152dp"
+            android:layout_gravity="center"
+            android:background="@drawable/buttons"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="45dp"
+            android:onClick="medium"
+            android:text="MEDIUM"
+            android:textSize="35dp" />
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:layout_width="194dp"
+        android:layout_gravity="center"
+        android:layout_height="180dp"
+        android:id="@+id/high"
+        android:layout_marginTop="10dp"
+        android:onClick="high"
+        android:text="HIGH"
+        android:textSize="40dp"
+        android:background="@drawable/buttons"/>
+
+
+
+
+
+
+
+
+    <!--<Button
+        android:id="@+id/btsos"
+        android:layout_width="194dp"
+        android:layout_gravity="center"
+        android:layout_height="180dp"
+        android:background="@drawable/buttons"
+
+
+        android:onClick="sos"
+        android:text="sos"
+        android:textSize="40dp" />-->
+
+    <Button
+        android:id="@+id/near"
+        android:layout_width="279dp"
+        android:layout_height="60dp"
+        android:onClick="near"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/buttons"
+        android:visibility="invisible"
+        android:text="Get to know who's near you" />
+
+
+
+</LinearLayout>

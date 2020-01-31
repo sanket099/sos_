@@ -1,0 +1,2 @@
+include ':app', ':MapmyIndiaGLAndroidSDK_v6.7.3', ':sos'
+rootProject.name='sos_api'
