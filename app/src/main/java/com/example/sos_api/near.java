@@ -92,6 +92,14 @@ public class near extends AppCompatActivity  implements OnMapReadyCallback {
 
                 nearbylist nearme = response.body();
                 List<nearby> ans = nearme.getAns();
+                /*for (LatLng latLng : latLngList) {
+                    mapmyIndiaMap.addMarker(new MarkerOptions()
+                            .position(latLng)
+                            .title("XYZ"));
+                }*/
+
+
+
 
                 for(int i = 0; i < ans.size() ; i++) {
                     System.out.println(i);
@@ -100,7 +108,7 @@ public class near extends AppCompatActivity  implements OnMapReadyCallback {
                     System.out.println(ans.get(i).getUid());
 
                     mapboxMap.addMarker(new MarkerOptions().position
-                            (new LatLng(Double.parseDouble(ans.get(i).getLat()) , Double.parseDouble(ans.get(i).getLat()) ))
+                            (new LatLng(Double.parseDouble(ans.get(i).getLat()) , Double.parseDouble(ans.get(i).getLongi()) ))
                             .title("USER LOCATION \n" + "lat : " + ans.get(i).getLat() + "  long : " + ans.get(i).getLongi()));
                 }
 

@@ -10,13 +10,16 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.IBinder;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -26,6 +29,7 @@ import java.util.TimerTask;
 
     public class YourService extends Service {
         public int counter=0;
+        TextToSpeech textToSpeech;
 
         @Override
         public void onCreate() {
@@ -58,6 +62,19 @@ import java.util.TimerTask;
             PendingIntent intent = PendingIntent.getActivity(context,1,myIntent,PendingIntent.FLAG_UPDATE_CURRENT);
 
 
+            textToSpeech=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                @Override
+                public void onInit(int status) {
+                    if(status != TextToSpeech.ERROR) {
+                        textToSpeech.setLanguage(Locale.getDefault());
+                    }
+                    else{
+                        Toast.makeText(YourService.this,"error",Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+
             NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
             String lattitude = shared_pref.getInstance(this).get_saved_lattitude_event();
             String longitude = shared_pref.getInstance(this).get_saved_longi_event();
@@ -68,6 +85,8 @@ import java.util.TimerTask;
                     .setCategory(Notification.CATEGORY_SERVICE)
                     .build();
             startForeground(1, notification);
+            textToSpeech.speak(String.valueOf("HELP!"),TextToSpeech.QUEUE_FLUSH,null);
+
         }
 
 

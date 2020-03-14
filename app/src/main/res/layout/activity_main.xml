@@ -6,9 +6,23 @@
     android:layout_height="match_parent"
 
     android:orientation="vertical"
-    android:background="#fcc590"
+    android:background="#2d132c"
     tools:context=".MainActivity"
-    android:padding="20dp">
+    android:padding="30dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SAFE-T"
+        android:textSize="35sp"
+        android:layout_gravity="center"
+
+        android:typeface="sans"
+        android:fontFamily="@font/font"
+
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="#c72c41"/>
 
     <ImageView
         android:layout_width="348dp"
@@ -22,7 +36,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:textColorHint="#212121"
+        android:textColor="#deafdc"
+        android:fontFamily="@font/font"
+        android:textColorHint="#deafdc"
+
+        android:layout_marginBottom="5dp"
         android:layout_marginEnd="5dp"
         android:background="@drawable/editbox"
 
@@ -35,8 +53,10 @@
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/font"
+        android:textColor="#deafdc"
         android:layout_margin="5dp"
-        android:textColorHint="#212121"
+        android:textColorHint="#deafdc"
         android:background="@drawable/editbox"
         android:hint="enter email"
         android:inputType="textEmailAddress" />
@@ -44,7 +64,9 @@
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
-        android:textColorHint="#212121"
+        android:fontFamily="@font/font"
+        android:textColorHint="#deafdc"
+        android:textColor="#deafdc"
         android:layout_height="wrap_content"
         android:background="@drawable/editbox"
         android:layout_margin="5dp"
@@ -55,10 +77,12 @@
         android:id="@+id/phn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColorHint="#212121"
+        android:fontFamily="@font/font"
+        android:textColorHint="#deafdc"
         android:background="@drawable/editbox"
         android:layout_margin="5dp"
         android:hint="enter phone number"
+        android:textColor="#deafdc"
         android:inputType="number" />
 
     <EditText
@@ -66,7 +90,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/editbox"
-        android:textColorHint="#212121"
+        android:textColor="#deafdc"
+        android:fontFamily="@font/font"
+        android:textColorHint="#deafdc"
         android:layout_margin="5dp"
         android:hint="enter address" />
 
@@ -79,8 +105,10 @@
         <Button
             android:id="@+id/register"
             android:layout_width="99dp"
+            android:fontFamily="@font/font"
             android:layout_height="match_parent"
             android:textColor="#212121"
+            android:textStyle="bold"
             android:layout_gravity="center"
             android:layout_marginStart="100dp"
             android:background="@drawable/buttons"
@@ -88,9 +116,10 @@
 
         <TextView
             android:id="@+id/gotologin"
+            android:fontFamily="@font/font"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#212121"
+            android:textColor="#c72c41"
             android:layout_margin="10dp"
             android:clickable="true"
             android:text="login here"

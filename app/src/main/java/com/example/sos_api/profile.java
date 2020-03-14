@@ -25,6 +25,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
@@ -33,6 +34,10 @@ import android.speech.tts.TextToSpeech;
 import android.telephony.SmsManager;
 import android.util.EventLog;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
@@ -76,8 +81,9 @@ import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 public class profile extends AppCompatActivity {
     TextView tv_details;
     TextView txtLat;
-    private LocationManager locationManager;
     Button sos;
+    private LocationManager locationManager;
+
     private LocationListener listener;
     int c;
     TextToSpeech ts;
@@ -116,7 +122,7 @@ public class profile extends AppCompatActivity {
         tv_details = findViewById(R.id.tv_details);
        //pusher();
 
-
+        sos = findViewById(R.id.high);
         /*dbHelper = new db_helper(this);
         lv =findViewById(R.id.lv);
         arrayList = new ArrayList<>(dbHelper.get_data());
@@ -144,7 +150,65 @@ public class profile extends AppCompatActivity {
             startService(mServiceIntent);
         }*/
         getLastLocation();
+        registerForContextMenu(sos);
     }
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_button,menu);
+
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.level_low:
+                low();
+                return true;
+
+            case R.id.level_medium:
+                medium();
+                return true;
+
+            case R.id.high:
+                high();
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+
+
+        }
+
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu2) {
+        getMenuInflater().inflate(R.menu.menu, menu2);
+        return super.onCreateOptionsMenu(menu2);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id){
+            case R.id.callpol:
+                call_pol();
+                Toast.makeText(profile.this, item.getTitle().toString(), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.shownearby:
+                near();
+                Toast.makeText(profile.this, item.getTitle().toString(), Toast.LENGTH_SHORT).show();
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
+
+    }
+
+
     private boolean isMyServiceRunning(Class<?> serviceClass) {
         ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
         for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
@@ -463,7 +527,8 @@ public class profile extends AppCompatActivity {
         private boolean checkPermissions() {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
                     ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-                    ActivityCompat.checkSelfPermission(this,Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.checkSelfPermission(this,Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(this,Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
                 return true;
             }
             return false;
@@ -472,7 +537,7 @@ public class profile extends AppCompatActivity {
         private void requestPermissions() {
             ActivityCompat.requestPermissions(
                     this,
-                    new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.SEND_SMS},
+                    new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.SEND_SMS,Manifest.permission.CALL_PHONE},
                     PERMISSION_ID
             );
         }
@@ -490,6 +555,7 @@ public class profile extends AppCompatActivity {
             if (requestCode == PERMISSION_ID) {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     getLastLocation();
+                    call_pol();
                 }
             }
         }
@@ -551,27 +617,28 @@ public class profile extends AppCompatActivity {
         String number2 = st.get(6);
         String number3 = st.get(10);
 
+        if(!number2.isEmpty()) {
+            smsManager.sendTextMessage(number2,null,message,null,null);
+            Toast.makeText(profile.this,"sent sos sms to  "+number2,Toast.LENGTH_LONG).show();
+        }
 
+        if(!number3.isEmpty()) {
+            smsManager.sendTextMessage(number3,null,message,null,null);
+            Toast.makeText(profile.this,"sent sos sms to  "+number3,Toast.LENGTH_LONG).show();
+        }
 
         smsManager.sendTextMessage(number,null,message,null,null);
         Toast.makeText(profile.this,"sent sos sms to  "+number,Toast.LENGTH_LONG).show();
-        //smsManager.sendTextMessage(number2,null,message,null,null);
-        Toast.makeText(profile.this,"sent sos sms to  "+number,Toast.LENGTH_LONG).show();
-        //smsManager.sendTextMessage(number3,null,message,null,null);
-        Toast.makeText(profile.this,"sent sos sms to  "+number,Toast.LENGTH_LONG).show();
-
-
-
 
     }
 
-    public void near(View view) {
+    public void near() {
             startActivity(new Intent(this,com.example.sos_api.near.class));
 
 
     }
 
-    public void high(View view) {
+    public void high() {
         pusher();
         String saved_lat = shared_pref.getInstance(this).get_saved_lat();
         String saved_longi = shared_pref.getInstance(this).get_saved_longi();
@@ -609,7 +676,7 @@ public class profile extends AppCompatActivity {
 
 
 
-    public void low(View view) {
+    public void low() {
         pusher();
         String saved_lat = shared_pref.getInstance(this).get_saved_lat();
         String saved_longi = shared_pref.getInstance(this).get_saved_longi();
@@ -647,7 +714,7 @@ public class profile extends AppCompatActivity {
 
 
 
-    public void medium(View view) {
+    public void medium() {
         pusher();
         String saved_lat = shared_pref.getInstance(this).get_saved_lat();
         String saved_longi = shared_pref.getInstance(this).get_saved_longi();
@@ -684,8 +751,60 @@ public class profile extends AppCompatActivity {
     }
 
 
+   /* public void call_police(View view) {
+        call_pol();
 
 
+    }*/
+    public void call_pol(){
+        if(ContextCompat.checkSelfPermission(profile.this,Manifest.permission.CALL_PHONE)!=PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(profile.this,new String[] {Manifest.permission.CALL_PHONE},1);
+
+        }
+        else{
+            String num = "tel:+919315839038";
+            startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(num)));
+        }
+
+
+    }
+
+    public void sos(View view) {
+
+        pusher();
+        String saved_lat = shared_pref.getInstance(this).get_saved_lat();
+        String saved_longi = shared_pref.getInstance(this).get_saved_longi();
+        if(checkPermissions()){
+            send_sms();
+        }
+        else{
+            requestPermissions();
+        }
+
+
+
+        final String value = shared_pref.getInstance(profile.this).get_saved_user_id();
+        Call<loc_response> call = retrofit_client.getInstance().getapi().getuserloc(value,saved_lat,saved_longi,"10000","high");
+        call.enqueue(new Callback<loc_response>() {
+            @Override
+            public void onResponse(Call<loc_response> call, Response<loc_response> response) {
+                loc_response locResponse = response.body();
+                assert locResponse != null;
+                if(locResponse.isSuccess()){
+                    Toast.makeText(profile.this,"ok "+locResponse.msg,Toast.LENGTH_LONG ).show();
+                }
+
+
+
+            }
+
+            @Override
+            public void onFailure(Call<loc_response> call, Throwable t) {
+                Toast.makeText(profile.this,"error " + t.getMessage(),Toast.LENGTH_LONG).show();
+
+            }
+        });
+    }
 }
 
 

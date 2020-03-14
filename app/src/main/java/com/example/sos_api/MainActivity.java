@@ -2,6 +2,7 @@ package com.example.sos_api;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -54,20 +55,13 @@ public class MainActivity extends AppCompatActivity {
         gotologin = findViewById(R.id.gotologin);
         etemail = findViewById(R.id.email);
         etphn = findViewById(R.id.phn);
-        //tverror = findViewById(R.id.tverror);
         dbHelper =new db_helper(this);
         etaddress = findViewById(R.id.address
         );
         etpassword = findViewById(R.id.password);
         btnregister = findViewById(R.id.register);
 
-        //Retrofit retrofit = new Retrofit.Builder()
-        //.baseUrl("https://still-lake-87096.herokuapp.com/")
-        //.addConverterFactory(GsonConverterFactory.create())
-        //.build();
 
-        //mapi = retrofit.create(api.class);
-        //getusers();
         gotologin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                             try {
                                 if (response.code() == 200) {
                                     string = response.body().string();
-
+                                    Toast.makeText(MainActivity.this,"registered",Toast.LENGTH_LONG).show();
                                 } else {
                                     assert response.errorBody() != null;
                                     string = response.errorBody().string();
@@ -111,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                             if (string != null) {
                                 try {
                                     JSONObject jsonObject = new JSONObject(string);
-                                    tverror.setText(jsonObject.getString("msg"));
+                                    //tverror.setText(jsonObject.getString("msg"));
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }

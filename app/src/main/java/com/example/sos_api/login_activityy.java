@@ -102,7 +102,6 @@ public class login_activityy extends AppCompatActivity {
             public void onClick(View v) {
                 final String login_emaail = et_login_email.getText().toString().trim();
                 String login_password = et_login_pass.getText().toString().trim();
-
                 Call<login_response> call = retrofit_client.getInstance().getapi().userlogin(login_emaail,login_password);
 
                 call.enqueue(new Callback<login_response>() {
@@ -172,13 +171,18 @@ public class login_activityy extends AppCompatActivity {
                                                String city_ = et_city.getText().toString();
                                                String city_2 = et_city2.getText().toString();
                                                String city_3 = et_city3.getText().toString();
-                                               shared_pref.getInstance(login_activityy.this).save_contacts(name_,email_,phnno_,city_,name_2,email_2,phnno_2,city_2,name_3,email_3,phnno_3,city_3);
+                                               if(name_.isEmpty() || phnno_.isEmpty() || email_.isEmpty()) {
+                                                   Toast.makeText( login_activityy.this, "Please enter atleast 1 emergency contact", Toast.LENGTH_LONG).show();
+                                               } else {
+                                                   shared_pref.getInstance(login_activityy.this).save_contacts(name_,email_,phnno_,city_,name_2,email_2,phnno_2,city_2,name_3,email_3,phnno_3,city_3);
 
-                                               Intent intent = new Intent(login_activityy.this,com.example.sos_api.profile.class);
+                                                   Intent intent = new Intent(login_activityy.this,com.example.sos_api.profile.class);
 
-                                               intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                   intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
-                                               startActivity(intent);
+                                                   startActivity(intent);
+                                               }
+
                                            }
                                        });
                                         /*String obj_name = shared_pref.getInstance(login_activityy.this).getuser().getName().toString();

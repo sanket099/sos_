@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:padding="30dp"
     android:layout_height="match_parent"
-    android:background="#fcc590"
+    android:background="#2d132c"
     tools:context=".profile">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tv_details"
         android:layout_margin="25dp"
-        android:textColor="#212121"
+        android:textColor="#deafdc"
+        android:fontFamily="@font/font"
         android:background="@drawable/editbox"
         android:gravity="center"
         android:textSize="20sp"/>
@@ -21,7 +23,18 @@
         android:layout_height="wrap_content"
         android:id="@+id/textview1"
         android:layout_margin="20dp"
+        android:visibility="gone"
         android:textSize="20sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hold to select SOS level"
+        android:layout_gravity="center"
+        android:fontFamily="@font/font"
+        android:gravity="center"
+        android:textColor="#deafdc"
+        android:textSize="25sp"
+        android:layout_margin="10dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,9 +49,10 @@
             android:layout_height="152dp"
             android:layout_gravity="center"
             android:background="@drawable/buttons"
-            android:onClick="low"
+            android:visibility="gone"
             android:shadowColor="#212121"
-            android:elevation="109dp"
+            android:elevation="20sp"
+
             android:layout_marginStart="45dp"
 
             android:layout_marginEnd="5dp"
@@ -50,10 +64,13 @@
             android:layout_width="152dp"
             android:layout_height="152dp"
             android:layout_gravity="center"
+            android:visibility="gone"
+
             android:background="@drawable/buttons"
+            android:elevation="20sp"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="45dp"
-            android:onClick="medium"
+
             android:text="MEDIUM"
             android:textSize="35dp" />
 
@@ -66,11 +83,30 @@
         android:layout_gravity="center"
         android:layout_height="180dp"
         android:id="@+id/high"
+        android:onClick="sos"
+        android:fontFamily="@font/font"
         android:layout_marginTop="10dp"
-        android:onClick="high"
-        android:text="HIGH"
+        android:textColor="#FFFF"
+        android:elevation="20sp"
+
+        android:text="SOS"
         android:textSize="40dp"
         android:background="@drawable/buttons"/>
+    <Button
+        android:id="@+id/call_police"
+        android:layout_width="98dp"
+        android:layout_height="76dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="13dp"
+        android:visibility="gone"
+        android:elevation="10dp"
+
+
+        android:background="@drawable/call_pol_button"
+        android:text="CALL POLICE"
+        android:textColor="#FFFF" />
+
+
 
 
 
@@ -91,16 +127,44 @@
         android:text="sos"
         android:textSize="40dp" />-->
 
-    <Button
-        android:id="@+id/near"
-        android:layout_width="279dp"
-        android:layout_height="60dp"
-        android:onClick="near"
-        android:layout_gravity="center"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/buttons"
-        android:visibility="invisible"
-        android:text="Get to know who's near you" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:layout_marginStart="10dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/call_police2"
+            android:layout_width="98dp"
+            android:layout_height="76dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="13dp"
+            android:visibility="gone"
+            android:elevation="10dp"
+
+
+            android:background="@drawable/call_pol_button"
+            android:text="CALL POLICE"
+            android:textColor="#FFFF" />
+
+        <Button
+            android:id="@+id/near"
+            android:layout_width="234dp"
+            android:layout_height="76dp"
+            android:elevation="20sp"
+            android:layout_gravity="center"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/buttons"
+            android:visibility="gone"
+
+
+
+
+            android:text="Get to know who's near you" />
+    </LinearLayout>
+
+
+
 
 
 

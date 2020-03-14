@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    android:background="#fcc590"
+    android:background="#2d132c"
+    android:padding="30dp"
     tools:context=".login_activityy">
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,29 +16,29 @@
 
 
         <EditText
+            android:id="@+id/email_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
 
 
-            android:drawablePadding="10dp"
-
-
-            android:textColorHint="#212121"
-            android:textColorHighlight="#212121"
-
-            android:inputType="textEmailAddress"
-            android:layout_marginTop="200dp"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/editbox"
-            android:gravity="center"
-            android:textColor="#212121"
-            android:id="@+id/email_login"
-            android:textSize="23sp"
 
+
+            android:layout_marginTop="200dp"
+            android:layout_marginEnd="20dp"
+
+            android:background="@drawable/editbox"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/font"
+            android:gravity="center"
             android:hint="enter email"
-            />
+            android:inputType="textEmailAddress"
+            android:textColor="#deafdc"
+            android:textColorHighlight="#deafdc"
+            android:textColorHint="#deafdc"
+
+            android:textSize="23sp" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,8 +47,9 @@
             android:gravity="center"
             android:layout_marginEnd="20dp"
             android:id="@+id/password_login"
-            android:textColor="#212121"
-            android:textColorHint="#212121"
+            android:fontFamily="@font/font"
+            android:textColor="#deafdc"
+            android:textColorHint="#deafdc"
             android:inputType="textPassword"
             android:textSize="23sp"
             android:hint="enter password"
@@ -57,8 +59,10 @@
             android:id="@+id/login_bt"
             android:layout_width="143dp"
             android:layout_height="71dp"
+            android:fontFamily="@font/font"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
+            android:textStyle="bold"
             android:textColor="#212121"
 
             android:background="@drawable/buttons"
@@ -66,6 +70,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/font"
             android:layout_margin="10dp"
 
             android:id="@+id/tvloginerror"/>
@@ -77,8 +82,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/font"
             android:textSize="25sp"
-            android:textColor="#212121"
+            android:textColor="#deafdc"
             android:layout_gravity="center"
             android:id="@+id/tvcontact2"
             android:text="1st contact"/>
@@ -87,9 +93,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:fontFamily="@font/font"
+            android:textColor="#deafdc"
             android:layout_marginTop="5dp"
             android:background="@drawable/editbox"
-            android:textColorHint="#212121"
+            android:textColorHint="#deafdc"
             android:hint="enter contact name"
             android:layout_marginEnd="20dp"
             android:id="@+id/name"
@@ -98,9 +106,11 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#deafdc"
             android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
-            android:textColorHint="#212121"
+            android:fontFamily="@font/font"
+            android:textColorHint="#deafdc"
             android:background="@drawable/editbox"
             android:hint="enter contact email"
             android:layout_marginEnd="20dp"
@@ -109,8 +119,10 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/font"
+            android:textColor="#deafdc"
             android:background="@drawable/editbox"
-            android:textColorHint="#212121"
+            android:textColorHint="#deafdc"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginTop="5dp"
@@ -120,9 +132,11 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/font"
+            android:textColor="#deafdc"
             android:hint="enter contact address"
             android:background="@drawable/editbox"
-            android:textColorHint="#212121"
+            android:textColorHint="#deafdc"
 
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
@@ -134,7 +148,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="25sp"
-            android:textColor="#212121"
+            android:fontFamily="@font/font"
+            android:textColor="#deafdc"
             android:layout_gravity="center"
             android:id="@+id/tvcontact1"
             android:text="2nd contact"/>
@@ -142,8 +157,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="enter contact name"
+            android:textColor="#deafdc"
             android:layout_marginTop="5dp"
-            android:textColorHint="#212121"
+            android:fontFamily="@font/font"
+            android:textColorHint="#deafdc"
             android:background="@drawable/editbox"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
@@ -153,9 +170,11 @@
             android:layout_width="match_parent"
             android:layout_marginStart="20dp"
             android:hint="enter contact email"
+            android:textColor="#deafdc"
+            android:fontFamily="@font/font"
             android:layout_marginTop="5dp"
             android:background="@drawable/editbox"
-            android:textColorHint="#212121"
+            android:textColorHint="#deafdc"
             android:layout_marginEnd="20dp"
             android:layout_height="wrap_content"
             android:id="@+id/email2"
@@ -165,8 +184,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@drawable/editbox"
+            android:fontFamily="@font/font"
             android:hint="enter contact phone number"
-            android:textColorHint="#212121"
+            android:textColorHint="#deafdc"
+            android:textColor="#deafdc"
 
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
@@ -175,9 +196,11 @@
 
         <EditText
             android:layout_width="match_parent"
+            android:fontFamily="@font/font"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:textColorHint="#212121"
+            android:textColorHint="#deafdc"
+            android:textColor="#deafdc"
             android:background="@drawable/editbox"
             android:layout_marginStart="20dp"
             android:hint="enter contact address"
@@ -189,19 +212,22 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:textColor="#212121"
+            android:textColor="#deafdc"
             android:layout_height="wrap_content"
             android:textSize="25sp"
             android:layout_gravity="center"
+            android:fontFamily="@font/font"
             android:id="@+id/tvcontact3"
             android:text="3rd contact"/>
         <EditText
             android:layout_width="match_parent"
+            android:fontFamily="@font/font"
             android:layout_marginTop="5dp"
             android:background="@drawable/editbox"
+            android:textColor="#deafdc"
             android:layout_height="wrap_content"
             android:hint="enter contact name"
-            android:textColorHint="#212121"
+            android:textColorHint="#deafdc"
 
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
@@ -209,9 +235,12 @@
             />
         <EditText
             android:layout_width="match_parent"
+
             android:layout_height="wrap_content"
+            android:fontFamily="@font/font"
             android:layout_marginTop="5dp"
-            android:textColorHint="#212121"
+            android:textColor="#deafdc"
+            android:textColorHint="#deafdc"
             android:background="@drawable/editbox"
             android:hint="enter contact email"
 
@@ -222,20 +251,25 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/font"
             android:id="@+id/phnno3"
             android:hint="enter contact phone number"
+            android:background="@drawable/editbox"
 
             android:layout_marginStart="20dp"
+            android:textColor="#deafdc"
             android:layout_marginEnd="20dp"
-            android:textColorHint="#212121"
+            android:textColorHint="#deafdc"
             />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_marginStart="20dp"
-            android:textColorHint="#212121"
+            android:textColorHint="#deafdc"
+            android:fontFamily="@font/font"
             android:layout_marginTop="5dp"
             android:background="@drawable/editbox"
+            android:textColor="#deafdc"
             android:layout_marginEnd="20dp"
             android:hint="enter contact address"
 
@@ -245,6 +279,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/font"
             android:layout_gravity="center"
             android:id="@+id/savecon"
             android:background="@drawable/buttons"
