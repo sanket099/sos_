@@ -28,9 +28,9 @@ Hence this app would be useful in all kinds of distress scenarios.
 * There is also be an **offline feature** wherein the user would provide the details of their known contacts.
 These contacts would also recieve a notification and an SMS consisting of the victim's location.
 
-*The user is also be able to **call the police** directly with just a button click.
+* The user is also be able to **call the police** directly with just a button click.
 
-*The information of the reciepients of the sos signal is also displayed on the phone of the user(sender).
+* The information of the reciepients of the sos signal is also displayed on the phone of the user(sender).
 
 
 NodeJS and ExpressJS is used for creating backend API and mongoDB as a database.
@@ -39,5 +39,5 @@ Android studio is used for android app development.
 ## Meet the Makers ##
 
 This project is found and maintained by :
-* Sanket Sinha @sanket099
-* Nikhil Gautam @nik-gautam
+* Sanket Sinha https://github.com/sanket099
+* Nikhil Gautam https://github.com/nik-gautam
